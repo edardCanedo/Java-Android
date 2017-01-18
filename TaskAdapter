@@ -1,0 +1,36 @@
+// Custom Adapter
+
+public class TarefaAdapter extends ArrayAdapter<Tarefa>
+{
+	public TarefaAdapter(Context context, List<Tarefa> values) 
+	{
+		
+		
+		super(context, R.layout.entry_item_orc, values);
+		
+		
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		
+		LayoutInflater inflater = LayoutInflater.from(getContext());
+		View view = inflater.inflate(R.layout.entry_item_orc, parent, false);
+
+		Tarefa t = getItem(position);
+
+		String text = t.getName();
+		//text = "uuuuii";
+		TextView textView = (TextView) view.findViewById(R.id.entryitemorcTextView1);
+		textView.setText(text);
+
+		ImageView imageView = (ImageView) view.findViewById(R.id.entryitemorcImageView1);
+		imageView.setImageResource(android.R.drawable.ic_menu_info_details);
+
+		if("Google".equals(text))
+			imageView.setImageResource(android.R.drawable.ic_menu_gallery);
+
+
+		return view;
+	}
+}
